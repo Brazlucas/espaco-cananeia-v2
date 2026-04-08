@@ -2,7 +2,7 @@ export const Hero = () => {
   const whatsappLink = 'https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Espaço%20Cananeia.'
 
   return (
-    <section id="home" className="relative w-full overflow-hidden" style={{ height: '100vh', minHeight: '500px' }}>
+    <section id="home" className="relative w-full overflow-hidden" style={{ height: '100vh', minHeight: '550px', marginTop: '-73px', paddingTop: '73px' }}>
       {/* Background Image / Video Placeholder */}
       <div className="absolute inset-0">
         <div

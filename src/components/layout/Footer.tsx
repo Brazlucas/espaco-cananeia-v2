@@ -20,12 +20,14 @@ export const Footer = () => {
         }}
       >
         <h2
-          className="heading-sage"
           style={{
+            fontFamily: '"Playfair Display", serif',
+            color: 'var(--sage)',
             fontSize: 'clamp(1.3rem, 3vw, 2rem)',
             marginBottom: '2rem',
             fontStyle: 'italic',
-            letterSpacing: '0.08em',
+            letterSpacing: '0.05em',
+            fontWeight: 400,
           }}
         >
           VOCÊ SONHA, NÓS REALIZAMOS
