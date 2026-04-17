@@ -1,9 +1,18 @@
 // Video Section + Estrutura Section
-// Matches the video player section and the estrutura section in reference
+// Uses real media from /lukinhas/fotos and /lukinhas/videos
+
+import { useState } from 'react'
+
+const VIDEO_HIGHLIGHTS = [
+  '/lukinhas/videos/WhatsApp Video 2026-04-01 at 16.00.03.mp4',
+  '/lukinhas/videos/WhatsApp Video 2026-04-01 at 16.00.22.mp4',
+  '/lukinhas/videos/Making of Noiva Andressa Realizado em 07-12-2025#fotografia #makingofdanoiva #noivas2025.mp4',
+  '/lukinhas/videos/O casal do dia foi Magno e  Mayara, que selaram sua união  na Mansão mais linda  de Guarulhos!E .mp4',
+  '/lukinhas/videos/Um casamento tão lindo do Casal Halex e Beatriz ficará pra sempre gravado na lembrança do Espaço.mp4',
+]
 
 export const Services = () => {
-  // Placeholder video URL - user will replace with real video
-  const videoId = 'YOUR_VIDEO_ID_HERE'
+  const [activeVideo, setActiveVideo] = useState(0)
 
   const features = [
     { icon: '🏛️', label: 'Salão de Festas' },
@@ -16,79 +25,127 @@ export const Services = () => {
     { icon: '♿', label: 'Acessibilidade' },
   ]
 
+  // Foto grid para estrutura
+  const estruturaFotos = [
+    '/lukinhas/fotos/_MG_0582.jpg',
+    '/lukinhas/fotos/_MG_0588.jpg',
+    '/lukinhas/fotos/_MG_0593 (1).jpg',
+    '/lukinhas/fotos/_MG_0596.jpg',
+    '/lukinhas/fotos/_MG_0606.jpg',
+  ]
+
+  // Fotos para eventos (casamento, formatura, corporativo, festa)
+  const eventosData = [
+    {
+      title: 'CASAMENTOS',
+      desc: 'Um cenário deslumbrante à beira da lagoa para o momento mais especial da sua vida. Cerimônia ao ar livre, recepção sofisticada e uma experiência inesquecível.',
+      img: '/lukinhas/fotos/_MG_1682.jpg',
+    },
+    {
+      title: 'FORMATURAS',
+      desc: 'Comemore esta conquista em um ambiente exclusivo e sofisticado. Espaço completo para receber sua turma com todo conforto e estilo.',
+      img: '/lukinhas/fotos/_MG_3215.jpg',
+    },
+    {
+      title: 'EVENTOS CORPORATIVOS',
+      desc: 'Ambiente profissional e inspirador para conferências, workshops, lançamentos e confraternizações empresariais.',
+      img: '/lukinhas/fotos/_MG_4098.jpg',
+    },
+    {
+      title: 'FESTAS & CELEBRAÇÕES',
+      desc: 'Aniversários, debutantes e celebrações especiais. Nosso espaço se adapta ao seu estilo para criar memórias únicas.',
+      img: '/lukinhas/fotos/_MG_1770.jpg',
+    },
+  ]
+
   return (
     <>
       {/* ===== VIDEO SECTION ===== */}
       <section
         id="video"
         style={{
-          background: 'var(--cream)',
+          background: '#0a0a0a',
           padding: '4rem 1.5rem',
           textAlign: 'center',
         }}
       >
-        <div style={{ maxWidth: '860px', margin: '0 auto' }}>
-          {/* Video Player Placeholder */}
+        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+          <h2
+            className="heading-sage"
+            style={{ fontSize: 'clamp(0.85rem, 2vw, 1.1rem)', marginBottom: '0.5rem' }}
+          >
+            NOSSO ESPAÇO EM VÍDEO
+          </h2>
+          <div className="divider-line" style={{ marginBottom: '2rem', background: 'var(--sage)' }} />
+
+          {/* Main video player */}
           <div
             id="video-player-area"
             style={{
               width: '100%',
               aspectRatio: '16/9',
               background: '#111',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               position: 'relative',
               overflow: 'hidden',
+              marginBottom: '1rem',
             }}
           >
-            {videoId === 'YOUR_VIDEO_ID_HERE' ? (
-              // Placeholder until real video is added
-              <div
+            <video
+              key={activeVideo}
+              autoPlay
+              controls
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            >
+              <source src={VIDEO_HIGHLIGHTS[activeVideo]} type="video/mp4" />
+            </video>
+          </div>
+
+          {/* Thumbnail strip */}
+          <div
+            style={{
+              display: 'flex',
+              gap: '6px',
+              overflowX: 'auto',
+              paddingBottom: '4px',
+            }}
+          >
+            {VIDEO_HIGHLIGHTS.map((v, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveVideo(i)}
+                id={`video-thumb-${i}`}
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  background: 'linear-gradient(135deg, #1a1a1a 0%, #2d3d25 50%, #1a2a18 100%)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '1rem',
+                  flex: '0 0 120px',
+                  height: '68px',
+                  background: '#1a1a1a',
+                  border: activeVideo === i ? '2px solid var(--sage)' : '2px solid transparent',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  padding: 0,
+                  transition: 'border-color 0.2s',
                 }}
               >
-                {/* Play Button */}
-                <div
-                  style={{
-                    width: '70px',
-                    height: '70px',
-                    borderRadius: '50%',
-                    border: '2px solid rgba(255,255,255,0.5)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <video
+                  src={v}
+                  muted
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: activeVideo === i ? 'rgba(141,164,126,0.2)' : 'rgba(0,0,0,0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'background 0.2s',
+                }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style={{ opacity: 0.8 }}>
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
-                <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                  [ Espaço para vídeo ]
-                </p>
-              </div>
-            ) : (
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`}
-                title="Espaço Cananeia - Highlights"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ position: 'absolute', inset: 0 }}
-              />
-            )}
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -143,37 +200,38 @@ export const Services = () => {
             ))}
           </div>
 
-          {/* Photo Gallery Placeholders */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '1rem' }}>
-            {[
-              { h: '280px', label: 'Foto do salão' },
-              { h: '280px', label: 'Foto da área externa' },
-              { h: '280px', label: 'Foto da cerimônia' },
-            ].map((img, i) => (
+          {/* Real Photo Gallery - estrutura */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '8px' }}>
+            {estruturaFotos.slice(0, 3).map((src, i) => (
               <div
                 key={i}
-                className="img-placeholder"
-                style={{ height: img.h, position: 'relative' }}
+                style={{ height: '280px', overflow: 'hidden', position: 'relative' }}
               >
-                <span style={{ position: 'absolute', bottom: '10px', color: 'rgba(255,255,255,0.4)', fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                  [ {img.label} ]
-                </span>
+                <img
+                  src={src}
+                  alt={`Estrutura do Espaço Cananeia ${i + 1}`}
+                  loading="lazy"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                />
               </div>
             ))}
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
-            {[
-              { h: '200px', label: 'Foto da recepção' },
-              { h: '200px', label: 'Foto da pista de dança' },
-            ].map((img, i) => (
+            {estruturaFotos.slice(3, 5).map((src, i) => (
               <div
                 key={i}
-                className="img-placeholder"
-                style={{ height: img.h, position: 'relative' }}
+                style={{ height: '200px', overflow: 'hidden', position: 'relative' }}
               >
-                <span style={{ position: 'absolute', bottom: '10px', color: 'rgba(255,255,255,0.4)', fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                  [ {img.label} ]
-                </span>
+                <img
+                  src={src}
+                  alt={`Estrutura do Espaço Cananeia ${i + 4}`}
+                  loading="lazy"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                />
               </div>
             ))}
           </div>
@@ -193,7 +251,7 @@ export const Services = () => {
             <div className="divider-line" style={{ marginBottom: '1.5rem' }} />
           </div>
 
-          {/* Events Grid - 2 column like reference */}
+          {/* Events Grid */}
           <div
             style={{
               display: 'grid',
@@ -202,28 +260,7 @@ export const Services = () => {
               border: '1px solid #ddd',
             }}
           >
-            {[
-              {
-                title: 'CASAMENTOS',
-                desc: 'Um cenário deslumbrante à beira da lagoa para o momento mais especial da sua vida. Cerimônia ao ar livre, recepção sofisticada e uma experiência inesquecível.',
-                img: 'Foto de casamento',
-              },
-              {
-                title: 'FORMATURAS',
-                desc: 'Comemore esta conquista em um ambiente exclusivo e sofisticado. Espaço completo para receber sua turma com todo conforto e estilo.',
-                img: 'Foto de formatura',
-              },
-              {
-                title: 'EVENTOS CORPORATIVOS',
-                desc: 'Ambiente profissional e inspirador para conferências, workshops, lançamentos e confraternizações empresariais.',
-                img: 'Foto corporativo',
-              },
-              {
-                title: 'FESTAS & CELEBRAÇÕES',
-                desc: 'Aniversários, debutantes e celebrações especiais. Nosso espaço se adapta ao seu estilo para criar memórias únicas.',
-                img: 'Foto de festa',
-              },
-            ].map((event, i) => (
+            {eventosData.map((event, i) => (
               <div
                 key={i}
                 style={{
@@ -233,14 +270,16 @@ export const Services = () => {
                   flexDirection: 'column',
                 }}
               >
-                {/* Image placeholder */}
-                <div
-                  className="img-placeholder"
-                  style={{ height: '200px', position: 'relative', flexShrink: 0 }}
-                >
-                  <span style={{ position: 'absolute', bottom: '8px', color: 'rgba(255,255,255,0.35)', fontSize: '0.55rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                    [ {event.img} ]
-                  </span>
+                {/* Real image */}
+                <div style={{ height: '220px', overflow: 'hidden', flexShrink: 0, position: 'relative' }}>
+                  <img
+                    src={event.img}
+                    alt={event.title}
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
                 </div>
                 {/* Text */}
                 <div style={{ padding: '1.5rem 1.75rem', flex: 1 }}>
