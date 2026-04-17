@@ -3,7 +3,3 @@ node_modules
 # Ignora TODOS os vídeos por padrão
 public/lukinhas/videos/
 dist/lukinhas/videos/
-
-# Exceções: re-inclui apenas os 3 vídeos usados no site
-!public/lukinhas/videos/WhatsApp Video 2026-04-01 at 16.00.03.mp4
-!public/lukinhas/videos/O casal do dia foi Magno e  Mayara, que selaram sua união  na Mansão mais linda  de Guarulhos!E .mp4
