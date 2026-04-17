@@ -1,12 +1,9 @@
 node_modules
 
-# Vídeos grandes — excedem o limite do GitHub (100 MB)
-# Esses arquivos ficam apenas locais ou em hospedagem externa
-public/lukinhas/videos/lv_0_20260312170835.mp4
-public/lukinhas/videos/lv_0_20260313072326.mp4
-public/lukinhas/videos/lv_0_20260317222609.mp4
-public/lukinhas/videos/lv_0_20260317210933.mp4
-public/lukinhas/videos/lv_7564932694212152629_20260312164808.mp4
-
-# dist/ também tem cópia dos vídeos — ignorar por segurança
+# Ignora TODOS os vídeos por padrão
+public/lukinhas/videos/
 dist/lukinhas/videos/
+
+# Exceções: re-inclui apenas os 3 vídeos usados no site
+!public/lukinhas/videos/WhatsApp Video 2026-04-01 at 16.00.03.mp4
+!public/lukinhas/videos/O casal do dia foi Magno e  Mayara, que selaram sua união  na Mansão mais linda  de Guarulhos!E .mp4

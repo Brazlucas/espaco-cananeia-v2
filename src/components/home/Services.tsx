@@ -5,10 +5,7 @@ import { useState } from 'react'
 
 const VIDEO_HIGHLIGHTS = [
   '/lukinhas/videos/WhatsApp Video 2026-04-01 at 16.00.03.mp4',
-  '/lukinhas/videos/WhatsApp Video 2026-04-01 at 16.00.22.mp4',
-  '/lukinhas/videos/Making of Noiva Andressa Realizado em 07-12-2025#fotografia #makingofdanoiva #noivas2025.mp4',
   '/lukinhas/videos/O casal do dia foi Magno e  Mayara, que selaram sua união  na Mansão mais linda  de Guarulhos!E .mp4',
-  '/lukinhas/videos/Um casamento tão lindo do Casal Halex e Beatriz ficará pra sempre gravado na lembrança do Espaço.mp4',
 ]
 
 export const Services = () => {
