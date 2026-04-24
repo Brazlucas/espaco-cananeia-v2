@@ -61,19 +61,19 @@ export const Services = () => {
       <section
         id="video"
         style={{
-          background: '#0a0a0a',
+          background: 'var(--black)',
           padding: '4rem 1.5rem',
           textAlign: 'center',
         }}
       >
         <div style={{ maxWidth: '960px', margin: '0 auto' }}>
           <h2
-            className="heading-sage"
+            className="heading-gold"
             style={{ fontSize: 'clamp(0.85rem, 2vw, 1.1rem)', marginBottom: '0.5rem' }}
           >
             NOSSO ESPAÇO EM VÍDEO
           </h2>
-          <div className="divider-line" style={{ marginBottom: '2rem', background: 'var(--sage)' }} />
+          <div className="divider-line" style={{ marginBottom: '2rem' }} />
 
           {/* Main video player */}
           <div
@@ -81,10 +81,12 @@ export const Services = () => {
             style={{
               width: '100%',
               aspectRatio: '16/9',
-              background: '#111',
+              background: '#0d0d0d',
               position: 'relative',
               overflow: 'hidden',
               marginBottom: '1rem',
+              border: '1px solid var(--black-border)',
+              boxShadow: '0 0 40px rgba(0,0,0,0.8)',
             }}
           >
             <video
@@ -115,7 +117,7 @@ export const Services = () => {
                   flex: '0 0 120px',
                   height: '68px',
                   background: '#1a1a1a',
-                  border: activeVideo === i ? '2px solid var(--sage)' : '2px solid transparent',
+                  border: activeVideo === i ? '2px solid var(--gold)' : '2px solid var(--black-border)',
                   cursor: 'pointer',
                   position: 'relative',
                   overflow: 'hidden',
@@ -131,7 +133,7 @@ export const Services = () => {
                 <div style={{
                   position: 'absolute',
                   inset: 0,
-                  background: activeVideo === i ? 'rgba(141,164,126,0.2)' : 'rgba(0,0,0,0.4)',
+                  background: activeVideo === i ? 'rgba(201,168,76,0.15)' : 'rgba(0,0,0,0.5)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -150,7 +152,7 @@ export const Services = () => {
       {/* ===== ESTRUTURA SECTION ===== */}
       <section
         id="estrutura"
-        style={{ background: 'white', padding: '5rem 1.5rem' }}
+        style={{ background: 'var(--black-soft)', padding: '5rem 1.5rem', borderTop: '1px solid var(--black-border)' }}
       >
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
@@ -179,7 +181,14 @@ export const Services = () => {
                 style={{
                   textAlign: 'center',
                   padding: '1.5rem',
-                  borderBottom: '1px solid #eee',
+                  borderBottom: '1px solid var(--black-border)',
+                  transition: 'border-color 0.3s',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.borderBottomColor = 'var(--gold)'
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.borderBottomColor = 'var(--black-border)'
                 }}
               >
                 <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{feature.icon}</div>
@@ -189,7 +198,7 @@ export const Services = () => {
                   fontWeight: 500,
                   textTransform: 'uppercase',
                   letterSpacing: '0.12em',
-                  color: 'var(--charcoal)',
+                  color: 'var(--text-light)',
                 }}>
                   {feature.label}
                 </p>
@@ -202,7 +211,7 @@ export const Services = () => {
             {estruturaFotos.slice(0, 3).map((src, i) => (
               <div
                 key={i}
-                style={{ height: '280px', overflow: 'hidden', position: 'relative' }}
+                style={{ height: '280px', overflow: 'hidden', position: 'relative', border: '1px solid var(--black-border)' }}
               >
                 <img
                   src={src}
@@ -219,7 +228,7 @@ export const Services = () => {
             {estruturaFotos.slice(3, 5).map((src, i) => (
               <div
                 key={i}
-                style={{ height: '200px', overflow: 'hidden', position: 'relative' }}
+                style={{ height: '200px', overflow: 'hidden', position: 'relative', border: '1px solid var(--black-border)' }}
               >
                 <img
                   src={src}
@@ -238,7 +247,7 @@ export const Services = () => {
       {/* ===== EVENTOS SECTION ===== */}
       <section
         id="eventos"
-        style={{ background: 'var(--cream)', padding: '5rem 1.5rem' }}
+        style={{ background: 'var(--black)', padding: '5rem 1.5rem', borderTop: '1px solid var(--black-border)' }}
       >
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
@@ -254,17 +263,25 @@ export const Services = () => {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: '0',
-              border: '1px solid #ddd',
+              border: '1px solid var(--black-border)',
             }}
           >
             {eventosData.map((event, i) => (
               <div
                 key={i}
                 style={{
-                  borderRight: i % 2 === 0 ? '1px solid #ddd' : 'none',
-                  borderBottom: i < 2 ? '1px solid #ddd' : 'none',
+                  borderRight: i % 2 === 0 ? '1px solid var(--black-border)' : 'none',
+                  borderBottom: i < 2 ? '1px solid var(--black-border)' : 'none',
                   display: 'flex',
                   flexDirection: 'column',
+                  background: 'var(--black-card)',
+                  transition: 'background 0.3s',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.background = '#1f1a0f'
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.background = 'var(--black-card)'
                 }}
               >
                 {/* Real image */}
@@ -277,6 +294,12 @@ export const Services = () => {
                     onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                     onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                   />
+                  {/* Gold overlay on hover */}
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.8) 100%)',
+                  }} />
                 </div>
                 {/* Text */}
                 <div style={{ padding: '1.5rem 1.75rem', flex: 1 }}>
@@ -285,7 +308,7 @@ export const Services = () => {
                     fontSize: '0.8rem',
                     fontWeight: 500,
                     letterSpacing: '0.15em',
-                    color: 'var(--charcoal)',
+                    color: 'var(--gold)',
                     marginBottom: '0.75rem',
                     textTransform: 'uppercase',
                   }}>

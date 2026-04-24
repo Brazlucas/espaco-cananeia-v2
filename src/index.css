@@ -5,14 +5,21 @@
 @tailwind utilities;
 
 :root {
-  --sage: #8DA47E;
-  --sage-light: #E1E4D8;
-  --sage-dark: #5C6B50;
-  --charcoal: #333333;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dark: #9A7A2E;
+  --gold-shine: #F5D97A;
+  --black: #0A0A0A;
+  --black-soft: #141414;
+  --black-card: #1A1A1A;
+  --black-border: #2A2A2A;
+  --off-white: #F5F0E8;
+  --text-muted: #9A8C7A;
+  --text-light: #C8BEB0;
+  --charcoal: #1C1C1C;
   --charcoal-light: #777777;
-  --cream: #FAFAF7;
-  --cream-off: #EEF0E9;
-  --gold: #B8A06A;
+  --cream: #F5F0E8;
+  --cream-off: #EDE8DC;
 }
 
 html {
@@ -21,8 +28,8 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  color: var(--charcoal);
-  background: var(--cream);
+  color: var(--off-white);
+  background: var(--black);
   margin: 0;
   padding: 0;
 }
@@ -37,15 +44,24 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 400;
-  color: var(--charcoal);
+  color: var(--off-white);
 }
 
+.heading-gold {
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+/* Keep .heading-sage as alias for .heading-gold for compatibility */
 .heading-sage {
   font-family: 'Cinzel', serif;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 400;
-  color: var(--sage);
+  color: var(--gold);
 }
 
 .body-text {
@@ -53,7 +69,7 @@ body {
   font-weight: 300;
   font-size: 0.9rem;
   line-height: 1.8;
-  color: var(--charcoal-light);
+  color: var(--text-light);
 }
 
 /* ===================== NAVIGATION ===================== */
@@ -64,7 +80,7 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--charcoal);
+  color: var(--off-white);
   text-decoration: none;
   padding: 4px 0;
   transition: color 0.3s ease;
@@ -77,7 +93,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--sage);
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-shine));
   transition: width 0.3s ease;
 }
 
@@ -87,23 +103,23 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--sage);
+  color: var(--gold-light);
 }
 
 .nav-link.active {
-  color: var(--charcoal);
+  color: var(--gold-light);
 }
 
 .nav-link.active::before {
-  background: var(--sage);
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-shine));
   width: 100%;
 }
 
 /* ===================== BUTTONS ===================== */
 .btn-outline-white {
   display: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  color: white;
+  border: 1px solid rgba(201, 168, 76, 0.8);
+  color: var(--gold-light);
   font-family: 'Montserrat', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
@@ -117,17 +133,18 @@ body {
 }
 
 .btn-outline-white:hover {
-  background: white;
-  color: var(--charcoal);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
 }
 
 .btn-dark {
   display: inline-block;
-  background: var(--charcoal);
-  color: white;
+  background: var(--gold);
+  color: var(--black);
   font-family: 'Montserrat', sans-serif;
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   padding: 14px 40px;
@@ -138,16 +155,19 @@ body {
 }
 
 .btn-dark:hover {
-  background: var(--sage-dark);
+  background: var(--gold-shine);
+  color: var(--black);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
 }
 
 .btn-sage {
   display: inline-block;
-  background: var(--sage-dark);
-  color: white;
+  background: var(--gold);
+  color: var(--black);
   font-family: 'Montserrat', sans-serif;
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   padding: 14px 40px;
@@ -159,68 +179,76 @@ body {
 }
 
 .btn-sage:hover {
-  background: var(--charcoal);
+  background: var(--gold-shine);
+  color: var(--black);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
 }
 
 /* ===================== FORM ===================== */
 .form-field {
   width: 100%;
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--black-border);
   padding: 10px 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.78rem;
-  color: var(--charcoal);
+  color: var(--off-white);
   background: transparent;
   outline: none;
   transition: border-color 0.3s;
 }
 
 .form-field:focus {
-  border-bottom-color: var(--sage);
+  border-bottom-color: var(--gold);
 }
 
 .form-field::placeholder {
-  color: #aaa;
+  color: var(--text-muted);
   font-weight: 300;
+}
+
+.form-field option {
+  background: var(--black-card);
+  color: var(--off-white);
 }
 
 .form-label {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
-  color: var(--charcoal);
+  color: var(--text-light);
   letter-spacing: 0.05em;
 }
 
 /* ===================== SECTIONS ===================== */
 .section-white {
-  background: white;
+  background: var(--black-soft);
 }
 
 .section-sage-light {
-  background: var(--sage-light);
+  background: var(--black-card);
 }
 
 .section-cream {
-  background: var(--cream);
+  background: var(--black);
 }
 
 /* ===================== DIVIDER ===================== */
 .divider-line {
   width: 40px;
   height: 1px;
-  background: var(--sage);
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-shine), var(--gold-dark));
   margin: 0 auto;
 }
 
 /* ===================== FOOTER ===================== */
 .footer-bar {
-  background: var(--sage-light);
-  color: var(--charcoal-light);
+  background: var(--black);
+  color: var(--text-muted);
   font-family: 'Montserrat', sans-serif;
   font-size: 0.65rem;
   letter-spacing: 0.05em;
+  border-top: 1px solid var(--black-border);
 }
 
 /* ===================== ANIMATIONS ===================== */
@@ -239,6 +267,20 @@ body {
   animation: fadeInUp 0.8s ease forwards;
 }
 
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold-shine) 50%, var(--gold-dark) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 3s linear infinite;
+}
+
 /* ===================== WHATSAPP FLOAT ===================== */
 .whatsapp-float {
   position: fixed;
@@ -252,22 +294,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
 /* ===================== IMAGE PLACEHOLDER ===================== */
 .img-placeholder {
-  background: linear-gradient(135deg, #c8d5ba 0%, #a8b89a 50%, #8da47e 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.7);
+  color: var(--gold);
   font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
@@ -279,7 +321,7 @@ select.form-field {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C9A84C' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 4px center;
 }

@@ -32,16 +32,21 @@ export const Gallery = () => {
   return (
     <section
       id="orcamentos"
-      style={{ background: 'white', padding: '5rem 1.5rem' }}
+      style={{
+        background: 'var(--black-soft)',
+        padding: '5rem 1.5rem',
+        borderTop: '1px solid var(--black-border)',
+      }}
     >
       <div style={{ maxWidth: '680px', margin: '0 auto' }}>
         {/* Heading */}
         <h2
-          className="heading-sage"
+          className="heading-gold"
           style={{ fontSize: 'clamp(1rem, 2.5vw, 1.3rem)', marginBottom: '0.75rem' }}
         >
           SOLICITE UM ORÇAMENTO
         </h2>
+        <div className="divider-line" style={{ margin: '0 0 1.5rem 0' }} />
         <p className="body-text" style={{ marginBottom: '2.5rem' }}>
           Preencha o formulário abaixo e nos conte qual evento você deseja realizar.
           Em breve, nossa equipe entrará em contato para ajudar em cada detalhe.
@@ -80,7 +85,7 @@ export const Gallery = () => {
           <div style={{ marginBottom: '1.5rem' }}>
             <label className="form-label">Telefone *</label>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '0.85rem', paddingBottom: '8px', borderBottom: '1px solid #ccc', lineHeight: '38px', color: '#666' }}>🇧🇷 +55</span>
+              <span style={{ fontSize: '0.85rem', paddingBottom: '8px', borderBottom: '1px solid var(--black-border)', lineHeight: '38px', color: 'var(--text-muted)' }}>🇧🇷 +55</span>
               <input
                 type="tel"
                 name="telefone"
@@ -120,7 +125,7 @@ export const Gallery = () => {
             <label className="form-label">Data do Evento *</label>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1.5fr', gap: '1rem', marginTop: '0.5rem' }}>
               <div>
-                <span className="form-label" style={{ color: '#999', fontSize: '0.6rem' }}>Dia</span>
+                <span className="form-label" style={{ color: 'var(--text-muted)', fontSize: '0.6rem' }}>Dia</span>
                 <select
                   name="dia"
                   value={formData.dia}
@@ -133,7 +138,7 @@ export const Gallery = () => {
                 </select>
               </div>
               <div>
-                <span className="form-label" style={{ color: '#999', fontSize: '0.6rem' }}>Mês</span>
+                <span className="form-label" style={{ color: 'var(--text-muted)', fontSize: '0.6rem' }}>Mês</span>
                 <select
                   name="mes"
                   value={formData.mes}
@@ -146,7 +151,7 @@ export const Gallery = () => {
                 </select>
               </div>
               <div>
-                <span className="form-label" style={{ color: '#999', fontSize: '0.6rem' }}>Ano</span>
+                <span className="form-label" style={{ color: 'var(--text-muted)', fontSize: '0.6rem' }}>Ano</span>
                 <select
                   name="ano"
                   value={formData.ano}

@@ -14,15 +14,45 @@ export const Footer = () => {
       {/* ===== TAGLINE SECTION ===== */}
       <section
         style={{
-          background: 'white',
+          background: 'var(--black-card)',
           padding: '5rem 1.5rem 2.5rem',
           textAlign: 'center',
+          borderTop: '1px solid var(--black-border)',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        {/* Subtle gold gradient top line */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '2px',
+          background: 'linear-gradient(90deg, transparent, var(--gold), transparent)',
+        }} />
+
+        {/* Logo */}
+        <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
+          <img
+            src="/lukinhas/logo.png"
+            alt="Espaço Cananeia"
+            style={{
+              height: '80px',
+              width: 'auto',
+              filter: 'drop-shadow(0 4px 16px rgba(201,168,76,0.4))',
+              opacity: 0.9,
+            }}
+            onError={e => {
+              e.currentTarget.style.display = 'none'
+            }}
+          />
+        </div>
+
         <h2
           style={{
             fontFamily: '"Playfair Display", serif',
-            color: 'var(--sage)',
+            color: 'var(--gold)',
             fontSize: 'clamp(1.3rem, 3vw, 2rem)',
             marginBottom: '2rem',
             fontStyle: 'italic',
@@ -32,6 +62,9 @@ export const Footer = () => {
         >
           VOCÊ SONHA, NÓS REALIZAMOS
         </h2>
+
+        {/* Gold divider */}
+        <div className="divider-line" style={{ marginBottom: '2rem' }} />
 
         <div
           style={{
@@ -48,13 +81,13 @@ export const Footer = () => {
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '0.8rem',
             fontWeight: 300,
-            color: 'var(--charcoal)',
+            color: 'var(--text-light)',
             letterSpacing: '0.04em',
           }}>
             {address}
           </p>
 
-          <div style={{ width: '1px', height: '1px', background: '#ccc', margin: '0.25rem 0' }} />
+          <div style={{ width: '1px', height: '1px', background: 'var(--black-border)', margin: '0.25rem 0' }} />
 
           {/* Contact links */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -64,22 +97,28 @@ export const Footer = () => {
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 300,
-                color: 'var(--charcoal)',
+                color: 'var(--text-light)',
                 textDecoration: 'none',
+                transition: 'color 0.2s',
               }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-light)')}
             >
               {email}
             </a>
-            <span style={{ color: '#ccc' }}>|</span>
+            <span style={{ color: 'var(--black-border)' }}>|</span>
             <a
               href={`tel:${phone.replace(/\D/g, '')}`}
               style={{
                 fontFamily: 'Montserrat, sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 300,
-                color: 'var(--charcoal)',
+                color: 'var(--text-light)',
                 textDecoration: 'none',
+                transition: 'color 0.2s',
               }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-light)')}
             >
               {phone}
             </a>
@@ -100,6 +139,15 @@ export const Footer = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.1)'
+                ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 12px rgba(37,211,102,0.4)'
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'
+                ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'
               }}
             >
               {/* WhatsApp icon */}
@@ -118,6 +166,15 @@ export const Footer = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.1)'
+                ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 12px rgba(220,39,67,0.4)'
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'
+                ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
@@ -135,18 +192,20 @@ export const Footer = () => {
           style={{
             width: '100%',
             height: '100%',
-            background: 'linear-gradient(135deg, #b8cba8 0%, #95ac85 50%, #7a9070 100%)',
+            background: 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'column',
             gap: '1rem',
+            borderTop: '1px solid var(--black-border)',
+            borderBottom: '1px solid var(--black-border)',
           }}
         >
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="var(--gold)" style={{ opacity: 0.7 }}>
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
             [ Mapa do Google Maps ]
           </p>
           <a
@@ -154,12 +213,14 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              color: 'rgba(255,255,255,0.8)',
+              color: 'var(--gold)',
               fontSize: '0.6rem',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               textDecoration: 'none',
-              borderBottom: '1px solid rgba(255,255,255,0.4)',
+              borderBottom: '1px solid rgba(201,168,76,0.4)',
+              paddingBottom: '2px',
+              transition: 'color 0.2s',
             }}
           >
             Ver no Google Maps
