@@ -3,11 +3,11 @@
 export const Footer = () => {
   const address = 'Cananeia - SP'
   const email = 'contato@espacocananeia.com.br'
-  const phone = '(13) 99999-9999'
-  const whatsapp = 'https://wa.me/5513999999999'
+  const phone = '(11) 99899-2034'
+  const whatsapp = 'https://wa.me/11998992034'
 
   // Google Maps embed - placeholder coordinates for Cananeia, SP
-  const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14836.37012345!2d-47.929!3d-25.014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d393b3c9b12345%3A0x12345678901234!2sCananeia%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1234567890'
+  const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.7408086531836!2d-46.5477979235104!3d-23.469812058237515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef57aaabcec91%3A0xe90cc5d562081e9f!2sEspa%C3%A7o%20Canan%C3%A9ia%20-%20Eventos%20%26%20Buffet!5e0!3m2!1spt-BR!2sbr!4v1785171886797!5m2!1spt-BR!2sbr'
 
   return (
     <footer id="contato">
@@ -186,46 +186,17 @@ export const Footer = () => {
       </section>
 
       {/* ===== GOOGLE MAP ===== */}
-      <div style={{ width: '100%', height: '320px', position: 'relative' }}>
-        {/* Map placeholder - user will update with correct coordinates */}
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            gap: '1rem',
-            borderTop: '1px solid var(--black-border)',
-            borderBottom: '1px solid var(--black-border)',
-          }}
-        >
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="var(--gold)" style={{ opacity: 0.7 }}>
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-            [ Mapa do Google Maps ]
-          </p>
-          <a
-            href={`https://maps.google.com/?q=Cananeia+SP`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: 'var(--gold)',
-              fontSize: '0.6rem',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              borderBottom: '1px solid rgba(201,168,76,0.4)',
-              paddingBottom: '2px',
-              transition: 'color 0.2s',
-            }}
-          >
-            Ver no Google Maps
-          </a>
-        </div>
+      <div style={{ width: '100%', height: '320px', position: 'relative', borderTop: '1px solid var(--black-border)', borderBottom: '1px solid var(--black-border)' }}>
+        <iframe
+          src={mapsEmbedUrl}
+          width="100%"
+          height="100%"
+          style={{ border: 0, display: 'block' }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          title="Localização Espaço Cananeia"
+        />
       </div>
 
       {/* ===== COPYRIGHT BAR ===== */}
