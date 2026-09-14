@@ -2,7 +2,7 @@
 
 export const Footer = () => {
   const address = 'Cananeia - SP'
-  const email = 'contato@espacocananeia.com.br'
+  const email = 'espacocananeiaoficial@gmail.com'
   const phone = '(11) 99899-2034'
   const whatsapp = 'https://wa.me/11998992034'
 
